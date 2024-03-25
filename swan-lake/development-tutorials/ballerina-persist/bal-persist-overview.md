@@ -5,7 +5,7 @@ description: The section gives an overview of the `bal persist` feature.
 keywords: ballerina, programming language, ballerina packages, persist, data model, cli tool, client api
 permalink: /learn/ballerina-persist/persist-overview/
 active: persist_overview
-intro: The `bal persist` feature allows you to store data in different data stores and retrieve them when needed. A data store can be a database or an in-memory cache. The `bal persist` feature currently supports in-memory tables, MySQL, MSSQL databases, and Google Sheets as data stores. As you can use the same syntax to access data in all these data stores, you do not need to learn different syntaxes to access data in different data stores.
+intro: The `bal persist` feature allows you to store data in different data stores and retrieve them when needed. A data store can be a database or an in-memory cache. The `bal persist` feature currently supports in-memory tables, MySQL, MSSQL, PostgreSQL databases, and Google Sheets as data stores. As you can use the same syntax to access data in all these data stores, you do not need to learn different syntaxes to access data in different data stores.
 redirect_from:
 - /learn/ballerina-persist/persist-overview/
 ---
@@ -48,7 +48,10 @@ Learn about how to define relationships between entity records and more about da
 
 The `bal persist` CLI is used to generate the client API for the data model. Based on the data store, additional configurable files and setup scripts are generated. For example, if you are using a relational database as the data store, the `persist_db_config.bal` file, and the `script.sql` script are generated. The `persist_db_config.bal` file is used to configure the relational database connection. The `script.sql` file is used to create the tables in the relational database. The client API is generated in the `generated` directory in the project root directory.
 
-The `bal persist` has two main built-in CLI commands: `persist init` and `persist generate`. The `persist init` command is used to initialize `bal persist` in the Ballerina project. The `persist generate` command is used to generate the client API for the data model. Additionally, there is an experimental `persist migrate` command to generate the SQL scripts for changing the table structure in the database when the data model is changed.
+The `bal persist` has two main built-in CLI commands: `persist init` and `persist generate`. The `persist init` command is used to initialize `bal persist` in the Ballerina project. The `persist generate` command is used to generate the client API for the data model. 
+
+Apart from these commands, `bal persist pull` can be used to introspect an existing database to generate a model definition so that `bal persist` can interact with existing databases without needing to change the existing database schema. Currently, database introspection is supported for the MySQL data store, with future support on the way.
+Moreover, `bal persist migrate` can be used to generate SQL scripts to migrate the model definition changes to the database. Please note that both `bal persist pull` and `bal persist migrate` are experimental features and their behavior may change in future releases.
 
 Learn more about `bal persist` CLI in the [CLI tool](/learn/persist-cli-tool/) section.
 
